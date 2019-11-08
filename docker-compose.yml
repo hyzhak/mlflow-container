@@ -18,7 +18,14 @@ services:
     - /var/metrics/1/mlflow/artifacts:/artifacts
     - /var/metrics/1/mlflow/tracking:/tracking
 
+    networks:
+    - my_net
+
     ports:
     - "5000:5000"
 
     restart: always
+
+networks:
+  my_net:
+    driver: bridge
