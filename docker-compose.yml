@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  mlflow_server:
+    build:
+      context: mlflow-server
+      dockerfile: Dockerfile
+      args:
+        MLFLOW_VERSION: "1.4.0"
+        PYTHON_VERSION: "3.8"
+
+    environment:
+      PATH_TO_ARTIFACTS: "/artifacts"
+      PATH_TO_TRACKING: "/tracking"
+      MLFLOW_PORT: "5000"
+
+    volumes:
+    - /var/metrics/1/mlflow/artifacts:/artifacts
+    - /var/metrics/1/mlflow/tracking:/tracking
+
+    ports:
+    - "5000:5000"
+
+    restart: always
