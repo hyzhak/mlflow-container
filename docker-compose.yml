@@ -39,6 +39,8 @@ services:
       POSTGRES_USER: mlflow
       POSTGRES_DB: mlflow
 
+    restart: always
+
     networks:
     - my_net
 
