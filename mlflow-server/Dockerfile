@@ -5,8 +5,6 @@ ARG PYTHON_VERSION=3.8
 
 FROM python:${PYTHON_VERSION}-alpine
 
-ARG MLFLOW_VERSION=1.4.0
-ENV MLFLOW_VERSION ${MLFLOW_VERSION}
 ENV PYTHON_VERSION ${PYTHON_VERSION}
 
 # Install all needed deps to install and compile numpy and pandas
@@ -27,6 +25,9 @@ RUN apk add --no-cache \
         libstdc++
 
 RUN apk add --no-cache bash
+
+ARG MLFLOW_VERSION=1.4.0
+ENV MLFLOW_VERSION ${MLFLOW_VERSION}
 
 RUN apk add --no-cache --virtual .build-deps \
         gcc \

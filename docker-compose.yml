@@ -1,12 +1,15 @@
 version: '3'
 
 services:
+  python:
+    image: python:3.8
+
   mlflow_server:
     build:
       context: mlflow-server
       dockerfile: Dockerfile
       args:
-        MLFLOW_VERSION: "1.4.0"
+        MLFLOW_VERSION: "1.6.0"
         PYTHON_VERSION: "3.8"
 
     environment:
